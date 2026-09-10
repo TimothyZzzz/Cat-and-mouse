@@ -562,6 +562,38 @@
       font-weight: 500;
     }
 
+    /* 活动时间与家属说明增强样式 */
+    .event-meta {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem 2.2rem;
+      background: #e8f2fe;
+      border-radius: 3rem;
+      padding: 0.9rem 2rem;
+      margin-bottom: 2rem;
+      border: 1px solid #b8d0ee;
+      font-size: 1rem;
+      font-weight: 500;
+      color: #1e4a7a;
+    }
+
+    .event-meta span {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #ffffffc0;
+      padding: 0.25rem 1.2rem;
+      border-radius: 40px;
+      box-shadow: 0 2px 6px rgba(50, 90, 140, 0.06);
+      backdrop-filter: blur(4px);
+    }
+
+    .event-meta i {
+      font-style: normal;
+      font-size: 1.2rem;
+    }
+
     @media (max-width: 780px) {
       .grid-2 {
         grid-template-columns: 1fr;
@@ -589,6 +621,16 @@
         flex-direction: column;
         align-items: flex-start;
       }
+      .event-meta {
+        flex-direction: column;
+        align-items: stretch;
+        border-radius: 2rem;
+        gap: 0.7rem;
+        padding: 1rem;
+      }
+      .event-meta span {
+        justify-content: center;
+      }
     }
   </style>
 </head>
@@ -596,6 +638,13 @@
   <div class="game-card">
     <h1>🐱 夜跑猫鼠 · 暗夜追逃 🐭</h1>
     <div class="subhead">高德地图 · 电子围栏 · 超能力博弈 · 奖品丰厚</div>
+
+    <!-- ===== 新增：活动时间 & 家属名额 ===== -->
+    <div class="event-meta">
+      <span><i>📅</i> 活动时间：2025年9月22日</span>
+      <span><i>👥</i> 每位报名同事可携带一名家属</span>
+      <span><i>🔢</i> 总人数上限 60 – 80 人</span>
+    </div>
 
     <!-- 第一行：活动概况 + 战前整备 -->
     <div class="grid-2">
@@ -680,22 +729,22 @@
           </div>
         </div>
         <hr>
-        <div style="font-weight:600; margin-bottom:0.5rem; color:#1e4a7a;">🎲 命环系统 </div>
+        <div style="font-weight:600; margin-bottom:0.5rem; color:#1e4a7a;">🎲 命环系统 (每个NPC冷却5分钟)</div>
         <!-- 猫阵营博弈 -->
         <div class="faction-box cat">
           <div style="display:flex; justify-content:space-between; align-items:center;">
             <span style="font-weight:600; color:#b03080;">🐱 猫阵营 · 猫咪博弈论</span>
-            <span class="meta-badge">前置条件：运动公里数 &gt; 3KM</span>
+            <span class="meta-badge">运动公里数 &gt; 3KM</span>
           </div>
           <p>▪ 持有3枚及以上“命环”的猫猫可发起博弈。</p>
           <p>▪ 成功则“命环”翻倍；失败则血本无归。</p>
-          <p>▪ 名额：3名（每个NPC冷却5分钟）。</p>
+          <p>▪ 名额：仅限初始猫总数的1/2（奇数则+1）。先到先得，每猫限一次。</p>
         </div>
         <!-- 鼠阵营博弈 -->
         <div class="faction-box mouse">
           <div style="font-weight:600; color:#1e7a40;">🐭 鼠阵营 · 耗子尾汁</div>
           <p>▪ 通过地图互动点，有50%几率获得1条额外“命环”（可抵扣一次抓捕）。</p>
-          <p>▪ 名额：无上限（每个NPC冷却5分钟）。</p>
+          <p>▪ 名额：全场仅限前3次成功获取命环。名额用完即止，先到先得。</p>
         </div>
       </div>
     </div>
