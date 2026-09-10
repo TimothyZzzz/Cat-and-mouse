@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>夜跑猫鼠 · 全规则说明 + 奖品</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', 'PingFang SC', Roboto, 'Helvetica Neue', sans-serif;
+      background: #f4f7fc;
+      background-image: radial-gradient(circle at 20% 10%, #e8f0fe 0%, #f4f7fc 80%);
+      min-height: 100vh;
+      padding: 2rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: #1a2a3a;
+      line-height: 1.5;
+    }
+
+    .game-card {
+      max-width: 1200px;
+      width: 100%;
+      background: #ffffff;
+      border-radius: 2.5rem;
+      padding: 2.5rem 2rem;
+      box-shadow: 0 20px 40px -12px rgba(30, 60, 100, 0.18), 0 0 0 1px rgba(80, 130, 200, 0.12);
+      border: 1px solid rgba(120, 170, 220, 0.25);
+    }
+
+    h1 {
+      font-size: 2.4rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-align: center;
+      background: linear-gradient(135deg, #2b6cc4, #5b8def, #8a6fe8);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 0.5rem;
+    }
+
+    .subhead {
+      text-align: center;
+      font-size: 1rem;
+      letter-spacing: 3px;
+      color: #6b8bb0;
+      border-bottom: 1px dashed #c2d4e8;
+      padding-bottom: 1.5rem;
+      margin-bottom: 2rem;
+      text-transform: uppercase;
+      font-weight: 400;
+    }
+
+    /* 网格分区 */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.8rem;
+      margin-bottom: 1.8rem;
+    }
+
+    .section {
+      background: #f9fbfe;
+      border-radius: 1.8rem;
+      padding: 1.6rem 1.8rem;
+      border: 1px solid #d6e2f0;
+      box-shadow: 0 4px 12px -4px rgba(50, 90, 140, 0.08);
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .section:hover {
+      border-color: #a0c0e0;
+      box-shadow: 0 6px 16px -4px rgba(50, 90, 140, 0.12);
+    }
+
+    .section-title {
+      font-size: 1.4rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 1.4rem;
+      color: #1e3f66;
+      border-left: 5px solid #4e8cff;
+      padding-left: 1rem;
+      letter-spacing: 0.5px;
+    }
+
+    .section-title i {
+      font-size: 1.6rem;
+      font-style: normal;
+    }
+
+    /* 通用文本 */
+    .rule-item {
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .rule-item .emoji-bullet {
+      font-size: 1.2rem;
+      min-width: 1.8rem;
+      text-align: center;
+    }
+
+    .rule-item strong {
+      color: #1a4a8a;
+      font-weight: 600;
+    }
+
+    .badge {
+      display: inline-block;
+      background: #e8f0fe;
+      border-radius: 30px;
+      padding: 0.2rem 0.9rem;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      color: #2a6ac0;
+      border: 1px solid #c0d6f0;
+      margin-left: 8px;
+      text-transform: uppercase;
+    }
+
+    /* 身份表格 */
+    .identity-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 0.6rem;
+      font-size: 0.92rem;
+      border-radius: 1rem;
+      overflow: hidden;
+    }
+
+    .identity-table th {
+      text-align: left;
+      padding: 0.8rem 0.8rem;
+      background: #eaf1fb;
+      color: #1e4a7a;
+      font-weight: 600;
+      font-size: 0.85rem;
+      letter-spacing: 0.5px;
+      border-bottom: 1px solid #d0e0f0;
+    }
+
+    .identity-table td {
+      padding: 0.8rem 0.8rem;
+      border-bottom: 1px solid #e4ecf6;
+      vertical-align: top;
+      background: #ffffff;
+    }
+
+    .identity-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .hand-color {
+      display: flex;
+      gap: 4px;
+      flex-wrap: wrap;
+    }
+
+    .color-dot {
+      display: inline-block;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      box-shadow: 0 0 4px currentColor;
+    }
+
+    .dot-green { background: #3fe07a; box-shadow: 0 0 6px #3fe07a; }
+    .dot-pink { background: #ff7bcb; box-shadow: 0 0 6px #ff7bcb; }
+    .dot-yellow { background: #f9e75c; box-shadow: 0 0 6px #f9e75c; }
+    .dot-red { background: #ff5e5e; box-shadow: 0 0 6px #ff5e5e; }
+
+    /* 特殊身份卡片 */
+    .special-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem;
+      margin: 0.8rem 0;
+    }
+
+    .special-card {
+      background: #f3f8ff;
+      border-radius: 1.4rem;
+      padding: 1.2rem 1.2rem;
+      border: 1px solid #d0e0f0;
+      box-shadow: 0 2px 8px rgba(50, 90, 140, 0.06);
+    }
+
+    .special-card h4 {
+      color: #b8860b;
+      font-size: 1.2rem;
+      font-weight: 600;
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      margin-bottom: 0.6rem;
+    }
+
+    .special-card .skill {
+      background: #e8f0fe;
+      border-radius: 30px;
+      padding: 0.3rem 1rem;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: #2a6ac0;
+      display: inline-block;
+      margin-top: 0.4rem;
+    }
+
+    /* 命环博弈模块 */
+    .meta-badge {
+      display: inline-block;
+      background: #f0e8ff;
+      border-radius: 16px;
+      padding: 0.2rem 0.8rem;
+      font-size: 0.75rem;
+      color: #5b3e9c;
+      border: 1px solid #d0c0f0;
+    }
+
+    .faction-box {
+      background: #ffffff;
+      border-radius: 1.4rem;
+      padding: 1rem 1.2rem;
+      margin-bottom: 1rem;
+      border: 1px solid #e0eaf5;
+      box-shadow: 0 2px 6px rgba(50, 90, 140, 0.04);
+    }
+
+    .faction-box.cat {
+      border-left: 5px solid #ff7bcb;
+    }
+
+    .faction-box.mouse {
+      border-left: 5px solid #3fe07a;
+    }
+
+    .faction-box p {
+      margin: 0.4rem 0;
+      font-size: 0.95rem;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #dce8f5;
+      margin: 1.2rem 0;
+    }
+
+    /* 胜负/荣誉 */
+    .win-condition {
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+    }
+
+    .win-item {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+    }
+
+    .win-label {
+      min-width: 85px;
+      font-weight: 600;
+      color: #1e4a7a;
+    }
+
+    .honor-tag {
+      background: #eaf1fb;
+      border-radius: 30px;
+      padding: 0.15rem 1rem;
+      font-size: 0.9rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border: 1px solid #c0d6f0;
+      color: #1e4a7a;
+    }
+
+    /* 红线警告 */
+    .redline {
+      background: #fff5f5;
+      border: 1px solid #f0c0c0;
+      border-radius: 1.4rem;
+      padding: 1.2rem 1.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .redline .section-title {
+      color: #b03030;
+      border-left-color: #d43f3f;
+      margin-bottom: 0.8rem;
+    }
+
+    .redline-item {
+      color: #7a2020;
+      font-size: 0.95rem;
+    }
+
+    /* ========== 奖品区域 ========== */
+    .prize-section {
+      background: linear-gradient(145deg, #f7faff, #eef4fc);
+      border: 1px solid #c8daf0;
+      box-shadow: 0 6px 18px -6px rgba(50, 90, 140, 0.12);
+    }
+
+    .prize-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 1.4rem;
+      margin-top: 0.8rem;
+    }
+
+    .prize-card {
+      background: #ffffff;
+      border-radius: 1.4rem;
+      padding: 1rem 1rem 1.2rem;
+      border: 1px solid #d8e6f5;
+      box-shadow: 0 4px 10px -4px rgba(50, 90, 140, 0.1);
+      transition: transform 0.15s, border-color 0.2s, box-shadow 0.2s;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .prize-card:hover {
+      border-color: #7aaae0;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 18px -6px rgba(50, 90, 140, 0.18);
+    }
+
+    /* 京东E卡特有样式 */
+    .prize-card.e-card-item {
+      border: 1px solid #f0c0a0;
+      background: linear-gradient(145deg, #ffffff, #fff8f0);
+    }
+
+    .prize-card.e-card-item:hover {
+      border-color: #e0a060;
+    }
+
+    /* 奖品图片占位区 */
+    .prize-image-wrapper {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      background: #f5f9ff;
+      border-radius: 1rem;
+      border: 1px dashed #b8d0e8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .prize-image-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      border-radius: 1rem;
+    }
+
+    .prize-image-placeholder {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      color: #8aaac8;
+      font-size: 0.85rem;
+      text-align: center;
+      padding: 0.5rem;
+      width: 100%;
+      height: 100%;
+      user-select: none;
+    }
+
+    .prize-image-placeholder svg {
+      opacity: 0.6;
+    }
+
+    .prize-rank {
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: #2a6ac0;
+      background: #e8f0fe;
+      display: inline-block;
+      padding: 0.15rem 0.9rem;
+      border-radius: 30px;
+      align-self: flex-start;
+      border: 1px solid #c0d6f0;
+    }
+
+    .prize-card.e-card-item .prize-rank {
+      background: #ffe8d0;
+      color: #b06010;
+      border-color: #e0b080;
+    }
+
+    .prize-name {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #1a2a3a;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .prize-desc {
+      font-size: 0.85rem;
+      color: #5a7a9a;
+    }
+
+    /* 全员参与奖卡片 (带图片位) */
+    .participation-prize {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.8rem;
+      background: #ffffff;
+      border-radius: 2rem;
+      padding: 1rem 1.5rem;
+      border: 1px solid #d0e0f0;
+      box-shadow: 0 4px 10px -4px rgba(50, 90, 140, 0.08);
+    }
+
+    .participation-image {
+      width: 90px;
+      height: 90px;
+      border-radius: 1.2rem;
+      background: #f5f9ff;
+      border: 1px dashed #b8d0e8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .participation-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .participation-image .prize-image-placeholder {
+      font-size: 0.7rem;
+      gap: 3px;
+    }
+
+    .participation-info {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .participation-label {
+      background: #4e8cff;
+      padding: 0.2rem 1.2rem;
+      border-radius: 30px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: #fff;
+      display: inline-block;
+      margin-bottom: 0.4rem;
+    }
+
+    .participation-name {
+      font-weight: 600;
+      font-size: 1.2rem;
+      color: #1a2a3a;
+    }
+
+    .participation-desc {
+      color: #5a7a9a;
+      font-size: 0.9rem;
+    }
+
+    /* 猫咪阵营特殊奖励 */
+    .special-prize {
+      margin-top: 1.5rem;
+      background: #fffaf0;
+      border-radius: 1.4rem;
+      padding: 1.2rem 1.5rem;
+      border-left: 5px solid #f5b342;
+      border-top: 1px solid #f5e0b0;
+      border-right: 1px solid #f5e0b0;
+      border-bottom: 1px solid #f5e0b0;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.8rem 1.5rem;
+    }
+
+    .special-prize .label {
+      background: #f5b34220;
+      color: #a07010;
+      padding: 0.2rem 1rem;
+      border-radius: 30px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      border: 1px solid #e0b860;
+    }
+
+    .special-prize .content {
+      font-weight: 500;
+      color: #7a5010;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .e-card {
+      background: #ffe8e8;
+      border-radius: 30px;
+      padding: 0.1rem 0.8rem;
+      border: 1px solid #e0a0a0;
+      font-size: 0.9rem;
+      color: #b03030;
+      font-weight: 600;
+    }
+
+    /* 全宽区域 */
+    .full-width {
+      grid-column: span 2;
+    }
+
+    /* 底部 */
+    .footer-note {
+      margin-top: 2rem;
+      text-align: center;
+      font-size: 0.8rem;
+      color: #8aaac8;
+      letter-spacing: 1px;
+      border-top: 1px solid #e0eaf5;
+      padding-top: 1.8rem;
+    }
+
+    /* 一些小icon的调整 */
+    .highlight {
+      color: #b8860b;
+      background: #fff8e0;
+      padding: 0.1rem 0.4rem;
+      border-radius: 8px;
+      font-weight: 500;
+    }
+
+    @media (max-width: 780px) {
+      .grid-2 {
+        grid-template-columns: 1fr;
+      }
+      .full-width {
+        grid-column: span 1;
+      }
+      .game-card {
+        padding: 1.8rem 1.2rem;
+      }
+      h1 {
+        font-size: 1.8rem;
+      }
+      .special-grid {
+        grid-template-columns: 1fr;
+      }
+      .prize-grid {
+        grid-template-columns: 1fr;
+      }
+      .special-prize {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .participation-prize {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="game-card">
+    <h1>🐱 夜跑猫鼠 · 暗夜追逃 🐭</h1>
+    <div class="subhead">高德地图 · 电子围栏 · 超能力博弈 · 奖品丰厚</div>
+
+    <!-- 第一行：活动概况 + 战前整备 -->
+    <div class="grid-2">
+      <!-- 活动概况 -->
+      <div class="section">
+        <div class="section-title"><i>🎯</i> 活动概况</div>
+        <div class="rule-item"><span class="emoji-bullet">🔹</span><span><strong>核心玩法：</strong>夜跑 + 空间躲藏 + 社交策略 + 超能力博弈。</span></div>
+        <div class="rule-item"><span class="emoji-bullet">🔹</span><span><strong>硬件要求：</strong>高德地图 App、满电手机（务必携带充电宝）。</span></div>
+        <div class="rule-item" style="margin-top:0.8rem;"><span class="emoji-bullet">⏱️</span><span><strong>时长：</strong>50–60 分钟（视现场情况微调）。</span></div>
+        <div class="rule-item"><span class="emoji-bullet">⚖️</span><span><strong>胜负唯一：</strong>只有一方阵营获胜。</span></div>
+      </div>
+
+      <!-- 战前整备 -->
+      <div class="section">
+        <div class="section-title"><i>⚙️</i> 战前整备</div>
+        <div class="rule-item"><span class="emoji-bullet">📍</span><span><strong>战区划定：</strong>高德地图“电子围栏”范围，严禁进入围栏外危险区域（工地、深水区）。</span></div>
+        <div class="rule-item"><span class="emoji-bullet">📡</span><span><strong>定位同步：</strong>全员加入位置共享群组。<span class="highlight">严禁关闭定位/模拟位置</span>，违者直接判负。</span></div>
+        <div class="rule-item"><span class="emoji-bullet">🎨</span><span><strong>视觉统一：</strong>全员更换指定的“猫/鼠”主题头像，确保地图辨识度。</span></div>
+      </div>
+    </div>
+
+    <!-- 身份标识表格 全宽 -->
+    <div class="section full-width" style="margin-bottom:1.8rem;">
+      <div class="section-title"><i>🆔</i> 身份标识</div>
+      <table class="identity-table">
+        <thead>
+          <tr><th>身份</th><th>手环颜色</th><th>主要职责</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>🐭 鼠鼠</strong></td>
+            <td><div class="hand-color"><span class="color-dot dot-green"></span><span class="color-dot dot-pink"></span></div>绿 + 粉</td>
+            <td>躲避猫猫追捕</td>
+          </tr>
+          <tr>
+            <td><strong>✨ 无敌鼠</strong></td>
+            <td><div class="hand-color"><span class="color-dot dot-pink"></span><span class="color-dot dot-yellow"></span></div>粉 + 黄</td>
+            <td>特殊鼠身份（免疫单体抓捕）</td>
+          </tr>
+          <tr>
+            <td><strong>💃 美人鼠</strong></td>
+            <td><div class="hand-color"><span class="color-dot dot-green"></span><span class="color-dot dot-pink"></span></div>绿 + 粉</td>
+            <td>特殊鼠身份（仅异性可抓）</td>
+          </tr>
+          <tr>
+            <td><strong>🐱 猫猫</strong></td>
+            <td><div class="hand-color"><span class="color-dot dot-pink"></span></div>粉色（初始猫佩戴铃铛）</td>
+            <td>搜索并捕获鼠鼠</td>
+          </tr>
+          <tr>
+            <td><strong>🎭 NPC</strong></td>
+            <td><div class="hand-color"><span class="color-dot dot-red"></span></div>红色</td>
+            <td>发布任务、提供技能及奖励</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 游戏流程 + 特殊身份/博弈 (两列) -->
+    <div class="grid-2">
+      <!-- 游戏流程 -->
+      <div class="section">
+        <div class="section-title"><i>📋</i> 游戏流程</div>
+        <div class="rule-item"><span class="emoji-bullet">1️⃣</span><span><strong>第一阶段：鼠鼠出动 (5分钟)</strong><br>鼠鼠优先逃跑，分散前往战区角落。猫猫在基地待命，观察地图动向。</span></div>
+        <div class="rule-item"><span class="emoji-bullet">2️⃣</span><span><strong>第二阶段：猎杀时刻</strong><br>猫猫出发。被猫触碰或按规则抓获的鼠鼠，需交出粉色荧光手环。<br>⚡ <strong>同化变异：</strong>被抓鼠鼠立即变为猫猫，更换头像加入猎杀阵营。<br>💫 若鼠拥有多个手环(“命环”)，可抵扣一次抓捕，之后2分钟内无法再被抓。</span></div>
+        <div class="rule-item"><span class="emoji-bullet">3️⃣</span><span><strong>第三阶段：中立单位 (NPC)</strong><br>宝藏猎人：游离于阵营之外的平衡仲裁者，随机刷新。玩家找到猎人并完成互动任务，可触发技能或奖励。</span></div>
+      </div>
+
+      <!-- 特殊身份 + 命环博弈简版 -->
+      <div class="section">
+        <div class="section-title"><i>🎭</i> 特殊身份与命环</div>
+        <div class="special-grid">
+          <div class="special-card">
+            <h4>🛡️ 无敌鼠</h4>
+            <div>技能【无敌金身】：免疫单体抓捕，必须由2只及以上猫猫同时抓捕。</div>
+            <span class="skill">⚡ 免疫单体</span>
+          </div>
+          <div class="special-card">
+            <h4>🌸 美人鼠</h4>
+            <div>技能【异性捕获】：只能被异性猫猫抓捕。</div>
+            <span class="skill">💘 异性限制</span>
+          </div>
+        </div>
+        <hr>
+        <div style="font-weight:600; margin-bottom:0.5rem; color:#1e4a7a;">🎲 命环系统 (每个NPC冷却5分钟)</div>
+        <!-- 猫阵营博弈 -->
+        <div class="faction-box cat">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <span style="font-weight:600; color:#b03080;">🐱 猫阵营 · 猫咪博弈论</span>
+            <span class="meta-badge">运动公里数 &gt; 3KM</span>
+          </div>
+          <p>▪ 持有3枚及以上“命环”的猫猫可发起博弈。</p>
+          <p>▪ 成功则“命环”翻倍；失败则血本无归。</p>
+          <p>▪ 名额：仅限初始猫总数的1/2（奇数则+1）。先到先得，每猫限一次。</p>
+        </div>
+        <!-- 鼠阵营博弈 -->
+        <div class="faction-box mouse">
+          <div style="font-weight:600; color:#1e7a40;">🐭 鼠阵营 · 耗子尾汁</div>
+          <p>▪ 通过地图互动点，有50%几率获得1条额外“命环”（可抵扣一次抓捕）。</p>
+          <p>▪ 名额：全场仅限前3次成功获取命环。名额用完即止，先到先得。</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========== 奖品区域 (全宽) ========== -->
+    <div class="section full-width prize-section" style="margin-bottom:1.8rem;">
+      <div class="section-title"><i>🎁</i> 奖品与奖励</div>
+      
+      <!-- 全员参与奖 (图片已链接毛绒挂件.jpg) -->
+      <div class="participation-prize">
+        <div class="participation-image">
+          <img src="毛绒挂件.jpg" alt="毛绒挂件" onerror="this.style.display='none'; this.parentNode.querySelector('.prize-image-placeholder').style.display='flex';">
+          <div class="prize-image-placeholder" style="display:none;">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+              <circle cx="8.5" cy="8.5" r="1.5"></circle>
+              <polyline points="21 15 16 10 5 21"></polyline>
+            </svg>
+            <span>奖品图片</span>
+          </div>
+        </div>
+        <div class="participation-info">
+          <div class="participation-label">🌟 全员参与奖</div>
+          <div class="participation-name">毛绒毛绒挂件 · 人手一份</div>
+          <div class="participation-desc">纪念版猫鼠主题挂件，参与即可获得</div>
+        </div>
+      </div>
+
+      <!-- 奖品网格 (含第1~5名 + 京东E卡) -->
+      <div class="prize-grid">
+        <!-- 第1名 -->
+        <div class="prize-card">
+          <div class="prize-image-wrapper">
+            <img src="手冲咖啡壶套装.jpg" alt="手冲咖啡壶套装" onerror="this.style.display='none'; this.parentNode.querySelector('.prize-image-placeholder').style.display='flex';">
+            <div class="prize-image-placeholder" style="display:none;">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                <polyline points="21 15 16 10 5 21"></polyline>
+              </svg>
+              <span>奖品图片</span>
+            </div>
+          </div>
+          <span class="prize-rank">🥇 第1名</span>
+          <div class="prize-name">☕ 手冲咖啡壶套装</div>
+          <div class="prize-desc">精致手冲全套，开启咖啡仪式感</div>
+        </div>
+
+        <!-- 第2名 -->
+        <div class="prize-card">
+          <div class="prize-image-wrapper">
+            <img src="运动骑行钛杯.jpg" alt="运动骑行钛杯" onerror="this.style.display='none'; this.parentNode.querySelector('.prize-image-placeholder').style.display='flex';">
+            <div class="prize-image-placeholder" style="display:none;">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                <polyline points="21 15 16 10 5 21"></polyline>
+              </svg>
+              <span>奖品图片</span>
+            </div>
+          </div>
+          <span class="prize-rank">🥈 第2名</span>
+          <div class="prize-name">🚴 运动骑行钛杯</div>
+          <div class="prize-desc">轻量钛合金，户外骑行必备</div>
+        </div>
+
+        <!-- 第3名 -->
+        <div class="prize-card">
+          <div class="prize-image-wrapper">
+            <img src="猫捉老鼠陶瓷杯子一对.jpg" alt="猫捉老鼠陶瓷杯子一对" onerror="this.style.display='none'; this.parentNode.querySelector('.prize-image-placeholder').style.display='flex';">
+            <div class="prize-image-placeholder" style="display:none;">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                <polyline points="21 15 16 10 5 21"></polyline>
+              </svg>
+              <span>奖品图片</span>
+            </div>
+          </div>
+          <span class="prize-rank">🥉 第3名</span>
+          <div class="prize-name">🐱🐭 猫捉老鼠陶瓷杯子一对</div>
+          <div class="prize-desc">趣味对杯，猫鼠CP专属</div>
+        </div>
+
+        <!-- 第4名 -->
+        <div class="prize-card">
+          <div class="prize-image-wrapper">
+            <img src="运动休闲登山包.jpg" alt="运动休闲登山包" onerror="this.style.display='none'; this.parentNode.querySelector('.prize-image-placeholder').style.display='flex';">
+            <div class="prize-image-placeholder" style="display:none;">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                <polyline points="21 15 16 10 5 21"></polyline>
+              </svg>
+              <span>奖品图片</span>
+            </div>
+          </div>
+          <span class="prize-rank">🏅 第4名</span>
+          <div class="prize-name">🎒 运动休闲登山包</div>
+          <div class="prize-desc">多功能轻便，城市户外两相宜</div>
+        </div>
+
+        <!-- 第5名 -->
+        <div class="prize-card">
+          <div class="prize-image-wrapper">
+            <img src="安德玛速干毛巾.jpg" alt="安德玛速干毛巾" onerror="this.style.display='none'; this.parentNode.querySelector('.prize-image-placeholder').style.display='flex';">
+            <div class="prize-image-placeholder" style="display:none;">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                <polyline points="21 15 16 10 5 21"></polyline>
+              </svg>
+              <span>奖品图片</span>
+            </div>
+          </div>
+          <span class="prize-rank">🏅 第5名</span>
+          <div class="prize-name">🧣 安德玛速干毛巾</div>
+          <div class="prize-desc">专业运动速干，吸汗透气</div>
+        </div>
+
+        <!-- 京东E卡 50元 (独立奖品卡片) -->
+        <div class="prize-card e-card-item">
+          <div class="prize-image-wrapper">
+            <img src="京东E卡50元.jpg" alt="京东E卡 50元" onerror="this.style.display='none'; this.parentNode.querySelector('.prize-image-placeholder').style.display='flex';">
+            <div class="prize-image-placeholder" style="display:none;">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                <polyline points="21 15 16 10 5 21"></polyline>
+              </svg>
+              <span>奖品图片</span>
+            </div>
+          </div>
+          <span class="prize-rank">🐱 猫咪阵营胜 · 鼠鼠存活奖</span>
+          <div class="prize-name">🎫 京东E卡 50元</div>
+          <div class="prize-desc">猫咪阵营获胜时，所有存活鼠鼠均可获得</div>
+        </div>
+      </div>
+
+      <!-- 猫咪阵营获胜特殊奖励说明条 -->
+      <div class="special-prize">
+        <span class="label">🐱 猫咪阵营获胜 · 特殊奖励</span>
+        <div class="content">
+          <span>若猫咪阵营最终获胜，所有存活的鼠鼠玩家将获得</span>
+          <span class="e-card">🎫 京东E卡 50元</span>
+          <span style="color:#9a7030; font-size:0.85rem;">(存活鼠鼠判定以活动结束时刻为准)</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 胜负判定 + 荣誉头衔 + 红线规则 (两列布局) -->
+    <div class="grid-2" style="margin-bottom:0;">
+      <!-- 胜负判定 & 荣誉 -->
+      <div class="section">
+        <div class="section-title"><i>🏆</i> 胜负判定 & 荣誉</div>
+        <div class="win-condition">
+          <div class="win-item">
+            <span class="win-label">🐱 猫猫胜：</span>
+            <span>限时内抓获 95% 以上的鼠鼠</span>
+          </div>
+          <div class="win-item">
+            <span class="win-label">🐭 鼠鼠胜：</span>
+            <span>限时结束，存活鼠鼠比例 大于 5%</span>
+          </div>
+          <div style="font-size:0.9rem; color:#5a7a9a; margin:0.5rem 0 0.2rem;">—— 只有一方阵营获胜 ——</div>
+          <hr style="margin:1rem 0;">
+          <div style="font-weight:600; color:#1e4a7a; margin-bottom:0.6rem;">🎖️ 荣誉头衔</div>
+          <div style="display:flex; gap:1.8rem; flex-wrap:wrap;">
+            <span class="honor-tag">🐱 猫王 · 个人抓捕数量最多</span>
+            <span class="honor-tag">🐭 鼠王 · 坚持到最后且未被同化</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 红线规则 -->
+      <div class="redline">
+        <div class="section-title"><i>🚫</i> 红线规则</div>
+        <div class="rule-item redline-item"><span class="emoji-bullet">⛔</span><span><strong>出界判定：</strong>走出“电子围栏”或故意关闭定位，系统自动判定出局（视为被抓）。</span></div>
+        <div class="rule-item redline-item"><span class="emoji-bullet">📵</span><span><strong>隐藏惩罚：</strong>故意遮挡手机屏幕导致位置更新停滞，取消所有奖项评选。</span></div>
+        <div class="rule-item redline-item"><span class="emoji-bullet">⚠️</span><span><strong>安全禁令：</strong>严禁攀爬高处、进入湖泊。夜跑请务必观察路况，避让路人及车辆。</span></div>
+        <div style="margin-top:0.8rem; font-size:0.85rem; color:#b03030; background:#fff0f0; padding:0.5rem 1rem; border-radius:30px; border:1px solid #f0c0c0;">
+          💡 违反红线可能导致直接判负，请所有玩家自觉遵守。
+        </div>
+      </div>
+    </div>
+
+    <!-- 底部说明 -->
+    <div class="footer-note">
+      ⚡ 活动最终解释权归组织者所有 · 请保持手机电量充足 · 安全第一，娱乐第二 ⚡
+    </div>
+  </div>
+</body>
+</html>
